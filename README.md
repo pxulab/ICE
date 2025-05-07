@@ -1,0 +1,1 @@
+The iiGSEA package is designed for performing iteractive imputed gene set enrichment analysis (GSEA) on normalized gene expression data. It includes functions to compute enrichment scores and identify marker genes associated with specific gene sets.
