@@ -1,0 +1,17 @@
+Package: ICE
+Type: Package
+Title: Iterative-imputation-based Cell Enrichment for scRNA-seq
+Version: 1.0.0
+Author: Your Name
+Maintainer: Your Name <your.email@example.com>
+Description: A method for Iterative-imputation-based Cell Enrichment for single-cell RNA-seq data. This package performs imputation, GSEA, and marker gene refinement to identify significant cells with specific gene set expressions.
+License: GPL-3
+Encoding: UTF-8
+Imports:
+  Rmagic,
+  reticulate,
+  GSVA,
+  dplyr,
+  pracma,
+  Seurat
+RoxygenNote: 7.3.2
