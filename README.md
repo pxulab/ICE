@@ -9,7 +9,7 @@ The development version from GitHub:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("ICE")
+devtools::install_github("pxulab/ICE")
 ```
 
 ## Usage Example
