@@ -31,7 +31,7 @@ run_cutoff <- function(es_out, start = 0.01, end = 0.6) {
     
     peaks <- findpeaks(-derivative, threshold = 0.5, minpeakdistance = nrow(gsea) * 0.02, sortstr = TRUE)
     cutoff <- peaks[1, 2]
-    es_cutoff[, i] <- cutoff
+    es_cutoff[, i] <- gsea[, 1][cutoff]
   }
   return(es_cutoff)
 }
