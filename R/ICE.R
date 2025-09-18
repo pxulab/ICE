@@ -34,7 +34,6 @@ ICE <- function(
 ) {
   # Load necessary libraries
   library(Rmagic)
-  library(reticulate)
 
   # Step 1: Impute missing expression data (if imputed data is not provided)
   if (is.null(imputed_data) || (length(imputed_data) == 1 && is.na(imputed_data))) {
