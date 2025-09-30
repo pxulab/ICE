@@ -59,14 +59,15 @@ library(reticulate)
 
 # Point reticulate to the correct Python environment
 # This is essential for the MAGIC imputation step
+# Skip it if MAGIC is installed by pip in default python environment.
 reticulate::use_condaenv("ice", required = TRUE)
 
 # 1. Load normalized gene expression data
 # The matrix should have genes as rows and cells as columns
-normalized_data <- readRDS("ICE/data/pancreas_normalized.RDS")
+normalized_data <- readRDS(system.file("data", "pancreas_normalized.RDS", package = "ICE"))
 
 # 2. Load gene set definitions
-gene_set <- read.delim("ICE/data/input_gene_set.tsv")
+gene_set <- read.delim(system.file("data", "input_gene_set.tsv", package = "ICE"))
 
 # 3. Format the gene sets into a named list for analysis
 gs <- list()
@@ -77,7 +78,7 @@ for (i in unique(gene_set$marker_group)) {
 }
 
 # 4. Run the main ICE function to perform Gene Set Enrichment Analysis
-ICE_result <- ICE(normalized_data, gs)
+ICE_result <- ICE(normalized_data, gs, iteration = TRUE)
 
 # 5. Access the results
 ICE_es <- ICE_result[[1]]      # Enrichment scores
