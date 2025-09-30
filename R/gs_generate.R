@@ -31,12 +31,11 @@ gs_generate <- function(es_out, es_cutoff, normalized_data, n_cutoff = 50, start
   
   for (i in colnames(es_out)) {
     gsea <- es_out[, i, drop = FALSE]
-    gsea <- gsea[order(gsea[, 1], decreasing = TRUE), , drop = FALSE]
     
     cutoff <- es_cutoff[, i]
-    obj@meta.data$iigsea <- ifelse(colnames(obj) %in% row.names(gsea)[1:(cutoff - 1)], 0, 1)
+    obj@meta.data$ice <- ifelse(colnames(obj) %in% row.names(gsea)[gsea[, 1] > cutoff], 0, 1)
     
-    DEG <- FindMarkers(obj, ident.1 = 0, group.by = "iigsea", only.pos = FALSE, min.pct = 0.1, logfc.threshold = 0.1)
+    DEG <- FindMarkers(obj, ident.1 = 0, group.by = "ice", only.pos = FALSE, min.pct = 0.1, logfc.threshold = 0.1)
     DEG$gene <- row.names(DEG)
     DEG$type <- i
     DEG_out <- rbind(DEG_out, DEG)
